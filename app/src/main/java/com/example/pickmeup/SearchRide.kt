@@ -84,4 +84,9 @@ class SearchRide : AppCompatActivity() {
 
         })
     }
+
+    fun viewMap(view: View) {
+        val intt =Intent(this,MapsActivity::class.java)
+        startActivity(intt)
+    }
 }

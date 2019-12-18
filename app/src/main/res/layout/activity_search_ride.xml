@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:text="Search for a ride"
         android:layout_gravity="center"
-        android:textColor="@color/md_white_1000"/>
+        android:textColor="@color/md_red_50"
+        android:textSize="20sp"/>
     <Space
         android:layout_width="match_parent"
         android:layout_height="20dp"/>
@@ -64,4 +65,15 @@
         android:textSize="20sp"
         android:clickable="true"
         android:onClick="viewAll"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtMap"
+        android:textColor="@color/md_red_100"
+
+        android:layout_marginTop="200dp"
+        android:layout_gravity="right"
+        android:text="My location"
+        android:clickable="true"
+        android:onClick="viewMap"/>
 </LinearLayout>
