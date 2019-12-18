@@ -25,8 +25,8 @@ class fragment_all : AppCompatActivity() {
         else{
             customerType="User"
 //            adapter.addFragment(AutoComplete(),"Post a ride")
-            adapter.addFragment(PostAride(),"post fragment")
-            adapter.addFragment(listTrip_frgment(),"avilableTrip")
+//            adapter.addFragment(PostAride(),"post fragment")
+//            adapter.addFragment(listTrip_frgment(),"avilableTrip")
             adapter.addFragment(RideList(),"avilableTrip")
         }
 

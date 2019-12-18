@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 class Login : AppCompatActivity() {
 // another change
+
+    lateinit var userType:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -24,6 +26,7 @@ class Login : AppCompatActivity() {
     private fun initDataBindings() {
         val id = R.drawable.login_background
         Utils.setImageToImageView(applicationContext, bgImageView, id)
+
     }
 
     private fun initActions() {
@@ -36,16 +39,20 @@ class Login : AppCompatActivity() {
             Toast.makeText(applicationContext, "Clicked Create Account", Toast.LENGTH_SHORT).show() }
 
         loginButton.setOnClickListener {
-
-            val intent = Intent(this,fragment_all::class.java)
-            intent.putExtra("type",editFirstname.text.toString())
-            if (editFirstname.text.toString()=="driver"){
+            userType=editFirstname.text.toString()
+            Toast.makeText(applicationContext, userType, Toast.LENGTH_SHORT).show()
+            if (userType=="driver"){
+                myApplication.type="driverLogin Changed"
                 val intent2 = Intent(this,AutoComplete::class.java)
+                intent2.putExtra("type","driver")
                 startActivity(intent2)
             }
+            else{
+                val intent = Intent(this,SearchRide::class.java)
+                intent.putExtra("type","user")
+                startActivity(intent)
+            }
 
-                else
-            startActivity(intent)
 //            Toast.makeText(applicationContext, "Clicked Login", Toast.LENGTH_SHORT).show()
         }
 
@@ -55,4 +62,6 @@ class Login : AppCompatActivity() {
 
     }
     //endregion
+
+
 }

@@ -118,6 +118,7 @@ class AutoComplete : AppCompatActivity() {
                 Toast.makeText(this@AutoComplete,""+p0.address,Toast.LENGTH_LONG).show()
                 toLat=p0.latLng!!.latitude
                 toLat=p0.latLng!!.longitude
+                Toast.makeText(this@AutoComplete,""+myApplication.type,Toast.LENGTH_LONG).show()
             }
 
             override fun onError(p0: Status) {

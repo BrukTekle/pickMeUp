@@ -6,8 +6,8 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".RideDetail"
+android:background="@color/cardview_dark_background">
 
-    android:background="@color/cardview_dark_background">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,8 +17,8 @@ tools:context=".RideDetail"
 
     <ImageView
         android:id="@+id/img1Detail"
-        android:layout_width="320dp"
-        android:layout_height="300dp"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
         android:layout_gravity="center"
         android:src="@drawable/abc_vector_test"/>
     <Space
