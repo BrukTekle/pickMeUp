@@ -15,12 +15,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchRide"></activity>
+        <activity android:name=".RideListFiltered"></activity>
+        <activity android:name=".RideDetailChange" />
+        <activity android:name=".SearchRide" />
         <activity android:name=".RideItem" />
-        <activity android:name=".RideList"></activity>
+        <activity android:name=".RideList" />
         <activity android:name=".RideDetail" />
         <activity android:name=".fragment_all" />
-        <activity android:name=".AutoComplete"></activity>
+        <activity android:name=".AutoComplete" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

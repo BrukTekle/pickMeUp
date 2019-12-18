@@ -3,6 +3,7 @@ package com.example.pickmeup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -17,19 +18,20 @@ class fragment_all : AppCompatActivity() {
 
     val adapter=MyviewPagerAdapter(supportFragmentManager)
         val recivedIntent=intent
-        if(recivedIntent.getStringExtra("type")=="driver"){
+        if(recivedIntent.getStringExtra("typeOfUser")=="driver"){
             customerType="Driver"
-            adapter.addFragment(PostAride(),"post fragment")
-            adapter.addFragment(RideList(),"avilableTrip")
+            Toast.makeText(this,"Reached here", Toast.LENGTH_LONG).show()
+            adapter.addFragment(RideList(),"Avilable Trips")
+            adapter.addFragment(RideListFiltered(),"Posted trips")
         }
         else{
             customerType="User"
+            Toast.makeText(this,recivedIntent.getStringExtra("typeOfUser"), Toast.LENGTH_LONG).show()
 //            adapter.addFragment(AutoComplete(),"Post a ride")
 //            adapter.addFragment(PostAride(),"post fragment")
 //            adapter.addFragment(listTrip_frgment(),"avilableTrip")
-            adapter.addFragment(RideList(),"avilableTrip")
+            adapter.addFragment(RideList(),"Available trip")
         }
-
 
     viewpager.adapter=adapter
     viewtab.setupWithViewPager(viewpager)
@@ -58,6 +60,8 @@ class MyviewPagerAdapter(manager: FragmentManager): FragmentPagerAdapter(manager
     override fun getPageTitle(position: Int): CharSequence? {
         return title[position]
     }
+
+
 }
 
 }

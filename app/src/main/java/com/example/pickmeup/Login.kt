@@ -30,7 +30,10 @@ class Login : AppCompatActivity() {
     }
 
     private fun initActions() {
-        forgotButton.setOnClickListener {Toast.makeText(applicationContext, "Clicked Forgot Password", Toast.LENGTH_SHORT).show() }
+        forgotButton.setOnClickListener {
+            Toast.makeText(applicationContext, "Clicked Forgot Password", Toast.LENGTH_SHORT).show()
+            forgotpassword().show(supportFragmentManager,"show dialog here")
+        }
 
         createTextView.setOnClickListener {
 

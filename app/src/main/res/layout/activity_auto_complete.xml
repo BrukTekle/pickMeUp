@@ -44,30 +44,36 @@
             />
 
         <EditText
+            android:id="@+id/editDatePost"
             android:backgroundTint="@android:color/holo_red_light"
             android:textColor="@android:color/white"
             android:layout_width="335dp"
             android:layout_height="wrap_content"
             android:textColorHint="@color/colorCheckboxDefaultNormal"
             android:hint="Date of travel"
-            android:layout_marginLeft="7dp"/>
+            android:autoLink="all"
+            android:focusable="true"
+            android:layout_marginLeft="7dp"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:editable="false"
+            />
 
         <EditText
+            android:id="@+id/editTimePost"
+            android:autoLink="all"
+            android:onClick="onClick2"
+            android:editable="false"
             android:backgroundTint="@android:color/holo_red_light"
             android:textColor="@android:color/white"
-            android:hint="Date"
+            android:hint="Time of departure"
             android:textColorHint="@color/colorCheckboxDefaultNormal"
             android:layout_width="335dp"
+            android:clickable="true"
+            android:focusable="true"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"/>
-        <EditText
-            android:backgroundTint="@android:color/holo_red_light"
-            android:textColor="@android:color/white"
-            android:hint="Departing time"
-            android:textColorHint="@color/colorCheckboxDefaultNormal"
-            android:layout_width="335dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"/>
+
 
         <EditText
             android:backgroundTint="@android:color/holo_red_light"

@@ -76,7 +76,8 @@
                     android:theme="@style/PSButton.Black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view58" />
+                    app:layout_constraintTop_toBottomOf="@+id/view58"
+                    />
 
 
                 <EditText
