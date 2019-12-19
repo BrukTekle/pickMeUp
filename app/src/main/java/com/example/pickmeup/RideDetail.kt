@@ -21,15 +21,19 @@ class RideDetail : AppCompatActivity() {
         var plateNumber=recivedIntent.getStringExtra("plateNumber")
         val carColor=recivedIntent.getStringExtra("color")
         val carType=recivedIntent.getStringExtra("carType")
+        val dateAndTime = recivedIntent.getStringExtra("date")
+        val seats = recivedIntent.getStringExtra("seats")
 
         img1Detail.setImageResource(img)
-        txtName.text=DriverName
-        txtFromDetail.text=from
-        txtToDetail.text=to
-        txtPhone.text=phone
-        txtPriceDetail.text=price
-        txtCarPlate.text=plateNumber
-        txtColor.text=carColor
-        txtType.text=carType
+        txtName.text= "Driver's Name: "+DriverName
+        txtFromDetail.text= "From Location: " + from
+        txtToDetail.text="To Location: "+to
+        txtPhone.text="Phone Number: "+phone
+        txtPriceDetail.text="Fare: "+price
+        txtCarPlate.text="Plate Number: "+plateNumber
+        txtColor.text="Car's Color: "+carColor
+        txtType.text="Car Type: "+carType
+        txtDateDetail.text = "Date and Time: "+dateAndTime
+        txtSit.text = "Seats Available: "+ seats
     }
 }

@@ -2,44 +2,27 @@ package com.example.pickmeup
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 //import com.sun.xml.internal.bind.v2.model.core.ID
-import java.util.Arrays.asList
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import java.util.*
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.location.Address
-import android.location.Geocoder
-import android.view.LayoutInflater
+import android.os.Build
 import android.view.View
-import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
-import androidx.fragment.app.Fragment
+import androidx.annotation.RequiresApi
+import com.example.pickmeup.server.Connection
+import com.example.pickmeup.server.User
 import com.google.android.libraries.places.api.Places
-import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest
-import com.google.android.libraries.places.api.net.FindCurrentPlaceResponse
 import com.google.android.libraries.places.api.net.PlacesClient
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.MultiplePermissionsReport
-import com.karumi.dexter.PermissionToken
-import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_auto_complete.*
-import java.lang.StringBuilder
-import java.util.jar.Manifest
-
+import com.example.pickmeup.server.*
 
 class AutoComplete : AppCompatActivity() {
 
@@ -71,10 +54,12 @@ class AutoComplete : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auto_complete)
 
+
 //        requestPermission()
         initPlaces()
         setupPlacesAutocomplete()
         setupPlacesAutocomplete2()
+
 
 //        editDatePost.setOnClickListener{view->
 //            Toast.makeText(this,"reache",Toast.LENGTH_LONG).show()
@@ -110,7 +95,7 @@ class AutoComplete : AppCompatActivity() {
 
     private fun setupPlacesAutocomplete() {
         val autocompleteFragment =
-            supportFragmentManager.findFragmentById(R.id.fragment_place) as AutocompleteSupportFragment
+            supportFragmentManager.findFragmentById(R.id.fragment_place_search) as AutocompleteSupportFragment
 //        val autocompleteFragment= activity!!.supportFragmentManager().findFragmentById(R.id.fragment_place) as AutocompleteSupportFragment
 
 //        var fm = activity!!.getSupportFragmentManager()
@@ -121,10 +106,10 @@ class AutoComplete : AppCompatActivity() {
         autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(p0: Place) {
 
-                Toast.makeText(this@AutoComplete, "" + p0.address, Toast.LENGTH_LONG).show()
+            //    Toast.makeText(this@AutoComplete, "" + p0.address, Toast.LENGTH_LONG).show()
                 fromLat = p0.latLng!!.latitude
-                fromLat = p0.latLng!!.longitude
-                Toast.makeText(this@AutoComplete, "" + fromLat, Toast.LENGTH_LONG).show()
+                fromLgt = p0.latLng!!.longitude
+             //   Toast.makeText(this@AutoComplete, "" + fromLat, Toast.LENGTH_LONG).show()
             }
 
             override fun onError(p0: Status) {
@@ -136,20 +121,20 @@ class AutoComplete : AppCompatActivity() {
 
     private fun setupPlacesAutocomplete2() {
         val autocompleteFragment =
-            supportFragmentManager.findFragmentById(R.id.fragment_place2) as AutocompleteSupportFragment
+            supportFragmentManager.findFragmentById(R.id.fragment_place2_search) as AutocompleteSupportFragment
         autocompleteFragment.setPlaceFields(placesFields)
         autocompleteFragment.setHint("To")
 
         autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
-            override fun onPlaceSelected(p0: Place) {
-                Toast.makeText(this@AutoComplete, "" + p0.address, Toast.LENGTH_LONG).show()
-                toLat = p0.latLng!!.latitude
-                toLat = p0.latLng!!.longitude
-                Toast.makeText(this@AutoComplete, "" + myApplication.type, Toast.LENGTH_LONG).show()
+            override fun onPlaceSelected(p1: Place) {
+              //  Toast.makeText(this@AutoComplete, "" + p1.address, Toast.LENGTH_LONG).show()
+                toLat = p1.latLng!!.latitude
+                toLgt = p1.latLng!!.longitude
+              //  Toast.makeText(this@AutoComplete, "" + myApplication.type, Toast.LENGTH_LONG).show()
             }
 
-            override fun onError(p0: Status) {
-                Toast.makeText(this@AutoComplete, "" + p0.statusMessage, Toast.LENGTH_LONG).show()
+            override fun onError(p1: Status) {
+                Toast.makeText(this@AutoComplete, "" + p1.statusMessage, Toast.LENGTH_LONG).show()
             }
         })
     }
@@ -159,10 +144,44 @@ class AutoComplete : AppCompatActivity() {
         placesClient = Places.createClient(this)
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     fun viewRides(view: View) {
-        val intent = Intent(this, fragment_all::class.java)
-        intent.putExtra("typeOfUser", "driver")
-        startActivity(intent)
+
+        val thread = Thread(Runnable {
+            try {
+                val gson = Gson();
+                val pref = getSharedPreferences("pickmeup", Context.MODE_PRIVATE)
+                val saved = pref.getString("user","")
+                val user: User? = gson.fromJson(saved,User::class.java)
+
+                val con: Connection = Connection();
+
+                var received:String? = con.posted(user?.email)
+                    //date[2]+"-"+date[1]+"-"+date[0]+" "+editTime.text.toString()+":00",fromLat.toString(),fromLgt.toString(),toLat.toString(),toLgt.toString())
+
+                //println("******************************************")
+                //println(date[2]+"-"+date[1]+"-"+date[0]+" "+editTime.text.toString()+":00")
+                //println(fromLat.toString())
+                //println(fromLgt.toString())
+                //println(toLat.toString())
+                //println(toLgt.toString())
+                //println(received)
+                //println("******************************************")
+
+
+                /*var rides = gson.fromJson(received,Rides::class.java)
+                println(rides.toString())
+                println("******************************************")*/
+
+                val intent = Intent(this, fragment_all::class.java)
+                intent.putExtra("typeOfUser", "driver")
+                intent.putExtra("rides",received)
+                startActivity(intent)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        })
+        thread.start()
     }
 
     //date picker
@@ -214,6 +233,56 @@ class AutoComplete : AppCompatActivity() {
 
             }
         }
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
+    fun submit(view: View){
+        var msg = ""
+        val thread = Thread(Runnable {
+            try {
+                val gson = Gson();
+                val pref = getSharedPreferences("pickmeup", Context.MODE_PRIVATE)
+                val saved = pref.getString("user","")
+                val user: User? = gson.fromJson(saved,User::class.java)
+
+                val con: Connection = Connection();
+
+                val date = editDatePost.text.toString().split(" / ")
+
+                println("******************************************************************")
+                println(date[2]+"-"+date[1]+"-"+date[0]+" "+editTimePost.text.toString()+":00")
+                println("******************************************************************")
+
+                var received:String? = con.add(user?.id.toString(),date[2]+"-"+date[1]+"-"+date[0]+" "+editTimePost.text.toString()+":00",fromLgt.toString(),fromLat.toString(),toLgt.toString(),toLat.toString(),fare.text.toString(),seats.text.toString(),comment.text.toString())
+                var result: Result? = gson.fromJson(received,Result::class.java)
+
+                println(result?.success)
+                println("******************************************************************")
+
+                if ((result != null) && (result.success == true)){
+                    msg = "Ride has been added successfully!"
+                }
+                else{
+                    msg = "Can't reach the server now"
+                }
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        })
+        thread.start()
+
+        while (thread.isAlive){
+
+        }
+
+        editDatePost.setText("")
+        editTimePost.setText("")
+        fare.setText("")
+        seats.setText("")
+        comment.setText("")
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 
     }
 }

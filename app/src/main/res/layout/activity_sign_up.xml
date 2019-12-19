@@ -41,7 +41,7 @@
                 <View
                     android:id="@+id/view58"
                     android:layout_width="0dp"
-                    android:layout_height="250dp"
+                    android:layout_height="400dp"
                     android:layout_marginTop="48dp"
                     android:background="@drawable/black_alpha_50"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -187,7 +187,6 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="8dp"
-
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:gravity="start"
@@ -203,7 +202,95 @@
                     app:layout_constraintTop_toTopOf="@+id/editEmail"
                     app:layout_constraintVertical_bias="0.0" />
 
+                <CheckBox
+                    android:id="@+id/asDriver"
+                    android:text="As a Driver"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="start"
+                    android:textColor="@color/md_white_1000"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/editPassword"
+                    app:layout_constraintVertical_bias="0.0"/>
 
+                <EditText
+                    android:id="@+id/editCarType"
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="start"
+                    android:hint="Car type"
+                    android:inputType="text"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/md_white_1000"
+                    android:textColorHint="@color/md_white_1000"
+                    android:textSize="@dimen/font_body_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/asDriver" />
+
+                <EditText
+                    android:id="@+id/editCarColor"
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="start"
+                    android:hint="Car color"
+                    android:inputType="text"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/md_white_1000"
+                    android:textColorHint="@color/md_white_1000"
+                    android:textSize="@dimen/font_body_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/editCarType" />
+
+                <EditText
+                    android:id="@+id/editPlateNumber"
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="start"
+                    android:hint="Plate number"
+                    android:inputType="text"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/md_white_1000"
+                    android:textColorHint="@color/md_white_1000"
+                    android:textSize="@dimen/font_body_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/editCarColor" />
                 <TextView
                     android:id="@+id/textView179"
                     android:layout_width="wrap_content"
@@ -219,6 +306,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/view57" />
+
+
 
                 <TextView
                     android:id="@+id/textView183"

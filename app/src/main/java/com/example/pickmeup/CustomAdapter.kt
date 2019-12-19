@@ -35,11 +35,13 @@ class CustomAdapter(var context:Context,val rideList: ArrayList<Trip>,var img:In
             intentDetail.putExtra("name",rideList[position].driverName)
             intentDetail.putExtra("from",rideList[position].from)
             intentDetail.putExtra("to",rideList[position].to)
+            intentDetail.putExtra("date",rideList[position].date)
             intentDetail.putExtra("phone",rideList[position].phone)
             intentDetail.putExtra("price",rideList[position].price)
             intentDetail.putExtra("plateNumber",rideList[position].plateNumber)
             intentDetail.putExtra("color",rideList[position].carColor)
             intentDetail.putExtra("carType",rideList[position].carType)
+            intentDetail.putExtra("seats",rideList[position].seats)
             context.startActivity(intentDetail)
         }
 //holder.parentlayout.setOnClickListener {

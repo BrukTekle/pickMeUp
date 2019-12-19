@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:background="@color/cardview_dark_background">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -30,14 +30,14 @@
         android:orientation="vertical"
         android:layout_margin="30dp">
         <fragment
-            android:id="@+id/fragment_place"
+            android:id="@+id/fragment_place_search"
             android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
 
         <fragment
-            android:id="@+id/fragment_place2"
+            android:id="@+id/fragment_place2_search"
             android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,37 +76,43 @@
 
 
         <EditText
+            android:id="@+id/fare"
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
             android:backgroundTint="@android:color/holo_red_light"
-            android:textColor="@android:color/white"
             android:hint="Fare(in USD)"
-            android:layout_width="335dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"
-            android:textColorHint="@color/colorCheckboxDefaultNormal"
-            />
-        <EditText
-            android:backgroundTint="@android:color/holo_red_light"
+            android:inputType="number"
             android:textColor="@android:color/white"
-            android:hint="Maximum seat Capacity"
-            android:layout_width="335dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"
-            android:textColorHint="@color/colorCheckboxDefaultNormal"/>
+            android:textColorHint="@color/colorCheckboxDefaultNormal" />
 
         <EditText
+            android:id="@+id/seats"
             android:layout_width="335dp"
             android:layout_height="wrap_content"
-            android:hint="Message"
             android:layout_marginLeft="7dp"
             android:backgroundTint="@android:color/holo_red_light"
+            android:hint="Maximum seat Capacity"
+            android:inputType="number"
             android:textColor="@android:color/white"
-            android:textColorHint="@color/colorCheckboxDefaultNormal"/>
+            android:textColorHint="@color/colorCheckboxDefaultNormal" />
+
+        <EditText
+            android:id="@+id/comment"
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:hint="Message"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/colorCheckboxDefaultNormal" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#AD1398DA"
+            android:onClick="submit"
             android:text="Post Ride"
             android:textColor="@android:color/white" />
 

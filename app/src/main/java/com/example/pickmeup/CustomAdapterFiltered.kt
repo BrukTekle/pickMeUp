@@ -40,6 +40,8 @@ class CustomAdapterFiltered(var context:Context, val rideList: ArrayList<Trip>, 
             intentDetail.putExtra("plateNumber",rideList[position].plateNumber)
             intentDetail.putExtra("color",rideList[position].carColor)
             intentDetail.putExtra("carType",rideList[position].carType)
+            intentDetail.putExtra("seats",rideList[position].seats)
+            intentDetail.putExtra("date",rideList[position].date)
             context.startActivity(intentDetail)
         }
 //holder.parentlayout.setOnClickListener {

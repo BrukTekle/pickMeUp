@@ -54,7 +54,7 @@
                     android:background="@color/md_grey_300"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editFirstname" />
+                    app:layout_constraintTop_toBottomOf="@+id/emailLogin" />
 
                 <View
                     android:id="@+id/view57"
@@ -105,7 +105,7 @@
                     android:gravity="start" />
 
                 <EditText
-                    android:id="@+id/editFirstname"
+                    android:id="@+id/emailLogin"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -126,7 +126,7 @@
                     android:gravity="start" />
 
                 <EditText
-                    android:id="@+id/editPassword"
+                    android:id="@+id/passwordLogin"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"

@@ -114,12 +114,14 @@ android:background="@color/cardview_dark_background">
     <Space
         android:layout_width="match_parent"
         android:layout_height="20dp"/>
+
     <Button
+        android:id="@+id/btnReserve"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnReserve"
         android:text="Reserve"
-        android:textColor="@color/md_white_1000"/>
+        android:textColor="@color/md_white_1000"
+        android:visibility="invisible" />
 
 
 </LinearLayout>

@@ -82,7 +82,7 @@ lateinit var myLatitude:LatLng
     fun search(view:View){
 //        loadPlacePicker()
         val s=getAddress(myLatitude)
-        Toast.makeText(this,s,Toast.LENGTH_LONG).show()
+       // Toast.makeText(this,s,Toast.LENGTH_LONG).show()
     }
     /**
      * Manipulates the map once available.
@@ -145,7 +145,7 @@ lateinit var myLatitude:LatLng
                     for (i in 0 until address.maxAddressLineIndex) {
                         addressText += if (i == 0) address.getAddressLine(i) else "\n" + address.getAddressLine(i)
                     }
-                    Toast.makeText(this,address.countryName,Toast.LENGTH_LONG).show()
+                  //  Toast.makeText(this,address.countryName,Toast.LENGTH_LONG).show()
 
                 }
             } catch (e: IOException) {
